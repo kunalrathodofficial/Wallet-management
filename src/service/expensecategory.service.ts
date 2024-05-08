@@ -13,13 +13,13 @@ export async function fetchExpenseCategories(): Promise<ExpenseCategory[]> {
   }
   
   /**
-   * @description This function is used to find a Order by Id
+   * @description This function is used to find a Categories by Id
    * @param {String} id
    * @author Kunal Rathod
    * @returns {Promise<ExpenseCategory|null>}
    */
   
-  export async function fetchOrderById(Id: string): Promise<ExpenseCategory | null> {
+  export async function fetchCategoriesById(Id: string): Promise<ExpenseCategory | null> {
     const objectId = new ObjectId(Id);
     return await ExpenseCategoryModel.findOne({ _id: objectId }).populate("userId");
   }

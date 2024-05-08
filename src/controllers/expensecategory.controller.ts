@@ -55,7 +55,7 @@ export async function addExpenseCategory(req: Request, res: Response) {
   export async function deleteExpenseCategory(req: Request, res: Response) {
     try {
       const { id} = req.params;
-      const category = await ExpenseCategoryService.fetchOrderById(id);
+      const category = await ExpenseCategoryService.fetchCategoriesById(id);
   
       if (category) {
         category.deleteStatus = true;

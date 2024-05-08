@@ -1,10 +1,15 @@
 import { ExpenseModel } from "../models";
-import jsonwebtoken from "jsonwebtoken";
-import bcrypt from "bcryptjs";
 import { ObjectId } from "mongodb";
 import { Expense } from "../models/expense.model";
 
-
+/**
+ * @description Fetches expenses grouped by category for a specified month.
+ * If no month is provided, fetches all expenses.
+ * @author Kunal Rathod
+ * @param {string} month 
+ * @returns {Promise<{ [key: string]: { totalAmount: number, count: number } }>} An object with expenses grouped by category ID,
+ * where each category ID maps to an object containing the total amount and count of expenses for that category.
+ */
 export async function fetchExpensesGrouped(month?: string) {
     let expenses: Expense[] = [];
   
@@ -37,7 +42,7 @@ export async function fetchExpensesGrouped(month?: string) {
  
  /**
  * @description This function is used to list all Users
- * @author Keshav suman
+ * @author Kunal Rathod
  * @param {number} page
  * @returns {Promise<any>}
  */
@@ -58,6 +63,15 @@ export async function fetchExpenses(page: number): Promise<any> {
   }
  
 
+  /**
+ * @description Fetches monthly expense data for a specific expense category,
+ * showing the total expense amount for each day of the month.
+ * @author Kunal Rathod
+ * @param {string} categoryId - The ID of the expense category.
+ * @param {string} month - The month in ISO format (e.g., "YYYY-MM").
+ * @returns {Promise<{ [key: string]: number }>} An object with expenses grouped by day of the month,
+ * where each day maps to the total expense amount for that day.
+ */
   
 export async function fetchMonthlyExpenseData(categoryId: string, month: string) {
     const startDate = new Date(month);

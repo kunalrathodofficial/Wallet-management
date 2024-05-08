@@ -56,7 +56,7 @@ export async function signup(req: Request, res: Response) {
         email: email,
         password: AuthenticationService.hashPassword(password),
       };
-      const createdUser = await AuthenticationService.createStudent(user as User);
+      const createdUser = await AuthenticationService.createUser(user as User);
       
       res.status(httpStatus.OK).send({
         statusCode: httpStatus.OK,
